@@ -1,8 +1,17 @@
-#!/usr/bin/env perl -l
+#!/usr/bin/env perl
 use strict;
 use warnings;
+use 5.010;
+#use POSIX;
 
-sub kocok
+sub isdigit
+{
+    $_ = shift;
+    return 1 if (/^\d+$/);
+    return 0;
+}
+
+sub dadu
 {
     my ($param) = @_;
     if(defined $param) {
@@ -14,7 +23,14 @@ sub kocok
     }
 }
 
-foreach(1..100){
-print kocok {start=>10,stop=>20};
+if(defined @ARGV) {
+    my $numarg = @ARGV;
+    if($numarg==1) {
+        my $arg = $ARGV[0];
+        if (isdigit($arg)) {
+            say dadu({start=>0,stop=>$ARGV[0]});
+        }
+    }
+} else {
+    say dadu;
 }
-
