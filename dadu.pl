@@ -2,7 +2,6 @@
 use strict;
 use warnings;
 use 5.010;
-#use POSIX;
 
 sub isdigit
 {
@@ -30,18 +29,21 @@ sub pilih
 
 if (defined @ARGV) {
     my $numarg = @ARGV;
-    if ($numarg==1) {
-        my $arg = $ARGV[0];
-        if (isdigit($arg)) {
-            say dadu({start=>0,stop=>$ARGV[0]});
-        } else {
-            say STDERR "Error: parameter batas atas bukan angka";
-        }
+    if (($numarg==1) && isdigit($ARGV[0])) {
+        #satu argumen program berupa angka N,
+        #hasilkan angka random antara 0 sampai N
+        say dadu({start=>0,stop=>$ARGV[0]});
     } elsif (($numarg==2) && isdigit($ARGV[0]) && isdigit($ARGV[1])) {
+        #dua argumen program berupa angka M dan N, 
+        #hasilkan angka random antara M dan N
         say dadu({start=>$ARGV[0],stop=>$ARGV[1]});
     } else {
+        #argumen berapapun dianggap sebagai kata
+        #pilih salah kata
         say pilih(@ARGV);
     }
 } else {
+    #tanpa argumen
+    #hasilkan hasil kocokan dadu biasa
     say dadu;
 }
