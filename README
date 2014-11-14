@@ -1,2 +1,4 @@
 USAGE
-    dadu [upper_limit]
+    dadu [[batas_bawah] batas_atas]
+    dadu [pilihan 1] [pilihan 2] [pilihan 3]
+
