@@ -29,6 +29,16 @@ if(defined @ARGV) {
         my $arg = $ARGV[0];
         if (isdigit($arg)) {
             say dadu({start=>0,stop=>$ARGV[0]});
+        } else {
+            say STDERR "Error: parameter batas atas bukan angka";
+        }
+    } elsif ($numarg==2) {
+        my $bawah = $ARGV[0];
+        my $atas = $ARGV[1];
+        if (isdigit($atas) && isdigit($bawah)) {
+            say dadu({start=>$bawah,stop=>$atas});
+        } else {
+            say STDERR "Error: parameter batas atas atau bawah bukan angka";
         }
     }
 } else {
